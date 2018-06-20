@@ -1,6 +1,6 @@
 {
   "name": "next-ga",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "index.js",
   "repository": "https://github.com/sergiodxa/next-ga.git",
   "author": "Sergio Xalambrí <sergiodxa@gmail.com> (https://sergiodxa.com)",
@@ -15,7 +15,8 @@
     "high order component"
   ],
   "scripts": {
-    "build": "babel src -d dist"
+    "build": "babel src -d dist",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "react-ga": "^2.5.3"
