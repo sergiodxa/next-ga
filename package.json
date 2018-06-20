@@ -5,6 +5,15 @@
   "repository": "https://github.com/sergiodxa/next-ga.git",
   "author": "Sergio Xalambrí <sergiodxa@gmail.com> (https://sergiodxa.com)",
   "license": "MIT",
+  "keywords": [
+    "nextjs",
+    "react",
+    "analytics",
+    "ga",
+    "google analytics",
+    "hoc",
+    "high order component"
+  ],
   "scripts": {
     "build": "babel src -d dist"
   },
