@@ -1,4 +1,4 @@
-import React, { Component, createElement } from "react";
+import { Component, createElement } from "react";
 
 import * as analytics from "./analytics";
 
@@ -10,7 +10,7 @@ export default code => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
       if (isLocal()) return;
-      analytics.init(code, isProd);
+      analytics.init(code);
       analytics.pageview();
     }
 
