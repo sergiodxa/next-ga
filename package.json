@@ -1,0 +1,23 @@
+{
+  "name": "next-ga",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sergiodxa/next-ga.git",
+  "author": "Sergio Xalambrí <sergiodxa@gmail.com> (https://sergiodxa.com)",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "dependencies": {
+    "react-ga": "^2.5.3"
+  },
+  "peerDependencies": {
+    "next": "^6.0.0",
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.4.3"
+  }
+}
