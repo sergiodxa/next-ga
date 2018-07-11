@@ -6,12 +6,21 @@ function isLocal() {
   return location.hostname === "localhost";
 }
 
-export default code => Page => {
+export default (code, { isApp = true } = {}) => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
-      if (isLocal()) return;
+      this.isLocal = isLocal();
+      if (this.isLocal) return;
       analytics.init(code);
       analytics.pageview();
+    }
+
+    componentDidUpdate() {
+      if (isApp) {
+        if (this.isLocal) return;
+        analytics.init(code);
+        analytics.pageview();
+      }
     }
 
     render() {
