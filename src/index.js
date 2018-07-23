@@ -9,20 +9,19 @@ function isLocal() {
 function isDev() {
   return process.env.NODE_ENV !== "production";
 }
-
-// listen route changes
-Router.events.on("routeChangeComplete", () => {
-  if (isLocal() || isDev()) return;
-  analytics.init(code);
-  analytics.pageview();
-});
-
 export default code => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
-      if (isLocal() || isDev()) return;
+      const shouldTrack = isLocal() || isDev()
+      if (!shouldTrack) return;
       analytics.init(code);
       analytics.pageview();
+
+      // listen route changes
+      Router.events.on("routeChangeComplete", () => {
+        analytics.pageview();
+      });
+
     }
 
     render() {
