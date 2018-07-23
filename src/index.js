@@ -25,7 +25,7 @@ export default code => Page => {
     }
 
     render() {
-      return createElement(Page, { ...props, analytics });
+      return createElement(Page, { ...this.props, analytics });
     }
   }
 
