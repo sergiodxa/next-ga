@@ -1,6 +1,6 @@
 {
   "name": "next-ga",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "repository": "https://github.com/sergiodxa/next-ga.git",
   "author": "Sergio Xalambrí <sergiodxa@gmail.com> (https://sergiodxa.com)",
