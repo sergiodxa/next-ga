@@ -1,30 +1,32 @@
+import Router from "next/router";
 import { Component, createElement } from "react";
-
 import * as analytics from "./analytics";
 
 function isLocal() {
   return location.hostname === "localhost";
 }
 
-export default (code, { isApp = true } = {}) => Page => {
+function isDev() {
+  return process.env.NODE_ENV !== "production";
+}
+
+// listen route changes
+Router.events.on("routeChangeComplete", () => {
+  if (isLocal() || isDev()) return;
+  analytics.init(code);
+  analytics.pageview();
+});
+
+export default code => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
-      this.isLocal = isLocal();
-      if (this.isLocal) return;
+      if (isLocal() || isDev()) return;
       analytics.init(code);
       analytics.pageview();
     }
 
-    componentDidUpdate() {
-      if (isApp) {
-        if (this.isLocal) return;
-        analytics.init(code);
-        analytics.pageview();
-      }
-    }
-
     render() {
-      return createElement(Page, this.props);
+      return createElement(Page, { ...props, analytics });
     }
   }
 
