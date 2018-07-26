@@ -1,4 +1,3 @@
-import Router from "next/router";
 import { Component, createElement } from "react";
 import * as analytics from "./analytics";
 
@@ -9,7 +8,7 @@ function isLocal() {
 function isDev() {
   return process.env.NODE_ENV !== "production";
 }
-export default code => Page => {
+export default (code, Router) => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
       const shouldTrack = isLocal() || isDev()
@@ -21,7 +20,6 @@ export default code => Page => {
       Router.events.on("routeChangeComplete", () => {
         analytics.pageview();
       });
-
     }
 
     render() {
