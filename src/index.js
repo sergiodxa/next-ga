@@ -8,7 +8,7 @@ function isLocal() {
 function isDev() {
   return process.env.NODE_ENV !== "production";
 }
-export default (code, Router) => Page => {
+export default (code, router) => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
       const shouldTrack = isLocal() || isDev()
@@ -17,9 +17,11 @@ export default (code, Router) => Page => {
       analytics.pageview();
 
       // listen route changes
-      Router.events.on("routeChangeComplete", () => {
-        analytics.pageview();
-      });
+      if (router && router.events && typeof router.events.on === "function") {
+        router.events.on("routeChangeComplete", () => {
+          analytics.pageview();
+        });
+      }
     }
 
     render() {
