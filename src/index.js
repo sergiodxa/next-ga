@@ -8,11 +8,12 @@ function isLocal() {
 function isDev() {
   return process.env.NODE_ENV !== "production";
 }
+
 export default (code, { router }) => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
-      const shouldTrack = isLocal() || isDev()
-      if (!shouldTrack) return;
+      const shouldntTrack = isLocal() || isDev();
+      if (shouldntTrack) return;
       analytics.init(code);
       analytics.pageview();
 
