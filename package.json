@@ -2,7 +2,7 @@
   "name": "next-ga",
   "version": "2.1.0",
   "main": "index.js",
-  "repository": "https://github.com/sergiodxa/next-ga.git",
+  "repository": "https://github.com/bayoudhi/next-ga.git",
   "author": "Sergio Xalambrí <sergiodxa@gmail.com> (https://sergiodxa.com)",
   "license": "MIT",
   "keywords": [
