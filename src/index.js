@@ -12,7 +12,7 @@ export default (code, { router }) => Page => {
   class WithAnalytics extends Component {
     componentDidMount() {
       const shouldTrack = isLocal() || isDev()
-      if (!shouldTrack) return;
+      if (shouldTrack) return;
       analytics.init(code);
       analytics.pageview();
 
