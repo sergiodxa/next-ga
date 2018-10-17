@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/cli@^7.1.2":
+"@babel/cli@7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.1.2.tgz#fc2853ae96824b3779ca85de4fd025ce3cf62a5e"
   dependencies:
@@ -24,7 +24,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@^7.1.2":
+"@babel/core@7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.1.2.tgz#f8d2a9ceb6832887329a7b60f9d035791400ba4e"
   dependencies:
@@ -224,7 +224,7 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-json-strings" "^7.0.0"
 
-"@babel/plugin-proposal-object-rest-spread@^7.0.0":
+"@babel/plugin-proposal-object-rest-spread@7.0.0", "@babel/plugin-proposal-object-rest-spread@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.0.0.tgz#9a17b547f64d0676b6c9cecd4edf74a82ab85e7e"
   dependencies:
@@ -458,7 +458,7 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@^7.1.0":
+"@babel/preset-env@7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.1.0.tgz#e67ea5b0441cfeab1d6f41e9b5c79798800e8d11"
   dependencies:
