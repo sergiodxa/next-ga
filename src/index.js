@@ -1,6 +1,6 @@
 import { Component, createElement } from "react";
 import * as prodLytics from "./analytics/prod";
-import * as devLytics from "./analytics/dev"
+import * as devLytics from "./analytics/dev";
 
 function isLocal(host) {
   return location.hostname === host;
@@ -12,6 +12,10 @@ function isDev() {
 
 export default (code, Router, { localhost = "localhost" } = {}) => Page => {
   class WithAnalytics extends Component {
+    state = {
+      analytics: undefined
+    };
+
     componentDidMount() {
       // check if it should track
       const shouldNotTrack = isLocal(localhost) || isDev();
@@ -24,7 +28,7 @@ export default (code, Router, { localhost = "localhost" } = {}) => Page => {
       this.analytics.pageview();
 
       // save possible previously defined callback
-      const previousCallback = Router.onRouteChangeComplete
+      const previousCallback = Router.onRouteChangeComplete;
       Router.onRouteChangeComplete = () => {
         // call previously defined callback if is a function
         if (typeof previousCallback === "function") {
@@ -32,11 +36,18 @@ export default (code, Router, { localhost = "localhost" } = {}) => Page => {
         }
         // log page
         this.analytics.pageview();
-      }
+      };
+
+      this.setState({
+        analytics
+      });
     }
 
     render() {
-      return createElement(Page, { ...this.props, analytics: this.analytics });
+      return createElement(Page, {
+        ...this.props,
+        analytics: this.state.analytics
+      });
     }
   }
 
