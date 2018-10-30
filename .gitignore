@@ -60,4 +60,7 @@ typings/
 # next.js build output
 .next
 
+# yarn.lock
+yarn.lock
+
 dist
