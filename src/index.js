@@ -10,7 +10,14 @@ function isDev() {
   return process.env.NODE_ENV !== "production";
 }
 
-export default (code, Router, { localhost = "localhost" } = {}) => Page => {
+export default (
+  conifgsOrTrackingId,
+  Router,
+  initOptions,
+  fieldsObject,
+  trackerNames,
+  { localhost = "localhost" } = {}
+) => Page => {
   class WithAnalytics extends Component {
     state = {
       analytics: undefined
@@ -23,7 +30,21 @@ export default (code, Router, { localhost = "localhost" } = {}) => Page => {
       const analytics = shouldNotTrack ? devLytics : prodLytics;
 
       // init analytics
-      analytics.init(code);
+      if (initOptions) {
+        analytics.init(conifgsOrTrackingId, initOptions);
+      } else {
+        analytics.init(conifgsOrTrackingId);
+      }
+      // set a group of field/value pairs on a tracker object.
+      if (fieldsObject) {
+        if (trackerNames && trackerNames.length) {
+          // multiple trackers
+          analytics.set(fieldsObject, trackerNames);
+        } else {
+          // default tracker
+          analytics.set(fieldsObject);
+        }
+      }
       // log page
       analytics.pageview();
 
