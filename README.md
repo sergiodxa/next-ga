@@ -18,6 +18,7 @@ import withGA from "next-ga";
 ```
 
 Available arguments:
+
 |Value|Notes|
 |------|-----|
 |configsOrTrackingId| `String`. Required. GA Tracking ID like `UA-000000-01` or `Array` of multiple trackers `Objects` passed to [`ReactGa.initialize()`](https://github.com/react-ga/react-ga#reactgainitializegatrackingid-options) method as the first argument.|
