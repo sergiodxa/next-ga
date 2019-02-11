@@ -23,7 +23,7 @@
     "react-ga": "^2.5.3"
   },
   "peerDependencies": {
-    "next": "^6.0.0 || ^7.0.0",
+    "next": "^6.0.0 || ^7.0.0 || ^8.0.0",
     "react": "^16.0.0"
   },
   "devDependencies": {
