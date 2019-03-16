@@ -10,7 +10,26 @@ function isDev() {
   return process.env.NODE_ENV !== "production";
 }
 
-export default (code, Router, { localhost = "localhost" } = {}) => Page => {
+const dntEnabled = (window) => {
+  if (
+    window.doNotTrack ||
+    navigator.doNotTrack ||
+    navigator.msDoNotTrack ||
+    "msTrackingProtectionEnabled" in window.external
+  ) {
+    if (
+      window.doNotTrack === "1" ||
+      navigator.doNotTrack === "yes" ||
+      navigator.doNotTrack === "1" ||
+      navigator.msDoNotTrack === "1" ||
+      window.external.msTrackingProtectionEnabled()
+    ) {
+      return true;
+    }
+  }
+}
+
+export default (code, Router, { localhost = "localhost", respectDNT = false } = {}) => Page => {
   class WithAnalytics extends Component {
     state = {
       analytics: undefined
@@ -18,7 +37,7 @@ export default (code, Router, { localhost = "localhost" } = {}) => Page => {
 
     componentDidMount() {
       // check if it should track
-      const shouldNotTrack = isLocal(localhost) || isDev();
+      const shouldNotTrack = (respectDNT && dntEnabled(window)) || isLocal(localhost) || isDev();
       // check if it should use production or dev analytics
       const analytics = shouldNotTrack ? devLytics : prodLytics;
 
