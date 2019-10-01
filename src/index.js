@@ -10,7 +10,7 @@ function isDev() {
   return process.env.NODE_ENV !== "production";
 }
 
-export default (code, Router, { localhost = "localhost" } = {}) => Page => {
+export default (code, Router, { localhost = "localhost" } = {}, anonymized = false) => Page => {
   class WithAnalytics extends Component {
     state = {
       analytics: undefined
@@ -23,7 +23,7 @@ export default (code, Router, { localhost = "localhost" } = {}) => Page => {
       const analytics = shouldNotTrack ? devLytics : prodLytics;
 
       // init analytics
-      analytics.init(code);
+      analytics.init(code, anonymized);
       // log page
       analytics.pageview();
 
