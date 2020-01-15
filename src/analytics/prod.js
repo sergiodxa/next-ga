@@ -1,9 +1,9 @@
 import ReactGA from "react-ga";
 
-const IS_BROWSER = typeof window !== "undefined";
+const isBrowser = () => typeof window !== "undefined";
 
 export function init(code) {
-  if (IS_BROWSER && !window.GA_INITIALIZED && code) {
+  if (isBrowser() && !window.GA_INITIALIZED && code) {
     ReactGA.initialize(code);
   }
 }
