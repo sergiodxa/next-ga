@@ -1,5 +1,9 @@
 # next-ga
 
+> The Next.js team has an official plugin being developed, while plugin supports it's still in canary only, the way the plugin works it's simpler than next-ga and I recommend you to check it and do it manually in your project until it's stable.
+
+> Plugin link: https://github.com/zeit/next.js/tree/canary/packages/next-plugin-google-analytics
+
 Next.js High Order Component to integrate Google Analytics on every page change.
 
 <a href="https://www.patreon.com/sergiodxa">
